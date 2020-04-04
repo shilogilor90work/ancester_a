@@ -1,12 +1,14 @@
 #pragma once
 
 #include <string>
-
+#include <iostream>
+#include <map>
 
 namespace family{
     class Tree {
         private:
-            std::string name;
+            std::map<std::string, std::string> father;
+            std::map<std::string, std::string> mother;
         public:
             Tree(std::string iname);
             Tree& addFather(std::string name, std::string father);
