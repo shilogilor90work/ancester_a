@@ -106,8 +106,6 @@ namespace family{
         }
         if (counter > 2) {
             message = message + repeat("great-", counter - 2);
-            // message.insert(0, counter - 2, "great-");
-            // message = "great-" * (counter - 2);
         }
         if (counter > 1) {
             message = message + "grand";
@@ -124,21 +122,21 @@ namespace family{
         return message;
     }
     std::string Tree::find(std::string relation) {
-        std::string parent = relation.substr(relation.size() - 6);
-        if (parent == "mother") {
-            for (auto &i : this->mother) {
-                if (this->relation(i.first) == relation){
-                    return i.first;
-                }
+        for (auto &i : this->mother) {
+            if (this->relation(i.first) == relation){
+                return i.first;
             }
-        } else if (parent == "father") {
-            for (auto &i : this->father) {
-                if (this->relation(i.first) == relation){
-                    return i.first;
-                }
+            if (this->relation(i.second) == relation){
+                return i.second;
             }
-        } else {
-            // throw std::exception();
+        }
+        for (auto &i : this->father) {
+            if (this->relation(i.first) == relation){
+                return i.first;
+            }
+            if (this->relation(i.second) == relation){
+                return i.second;
+            }
         }
         return "unrelated";
     }

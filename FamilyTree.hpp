@@ -6,10 +6,9 @@
 
 namespace family{
     class Tree {
-        private:
+        public:
             std::map<std::string, std::string> father;
             std::map<std::string, std::string> mother;
-        public:
             Tree(std::string iname);
             Tree& addFather(std::string name, std::string father);
             Tree& addMother(std::string name, std::string mather);
